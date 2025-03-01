@@ -7,6 +7,7 @@ from alembic import context
 
 from src.database import Base
 from src.auth.models import User, Permission, Group
+from src.mesvere.models import Mesvere, MesvereQeydleri
 
 from dotenv import load_dotenv
 import os

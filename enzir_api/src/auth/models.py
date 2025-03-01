@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Table
 from sqlalchemy.orm import relationship
-from database import Base
+from src.database import Base
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 group_permissions = Table(
     "group_permissions",
@@ -57,7 +57,8 @@ class User(Base):
     password = Column(String)
     is_active = Column(Boolean, default=True)
     is_superuser = Column(Boolean, default=False)
-    created_at = Column(DateTime, default=datetime.now)
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
 
     permissions = relationship("Permission", secondary=user_permissions, back_populates="users")
     groups = relationship("Group", secondary=user_groups, back_populates="users")
+    mesvere_qeydleri = relationship("MesvereQeydleri", back_populates="user")

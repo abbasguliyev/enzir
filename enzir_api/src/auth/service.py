@@ -11,8 +11,8 @@ def create_user(db: Session, user: schemas.UserCreate):
     hashed_password = hash_password(user.password)
     return crud.create_user(db=db, user=user, hashed_password=hashed_password)
 
-def get_all_users(db: Session):
-    return crud.get_all_users(db)
+def get_all_users(db: Session, offset: int = 0, limit: int = 10):
+    return crud.get_all_users(db, offset=offset, limit=limit)
 
 def get_user(db: Session, user_id: int):
     db_user = crud.get_user_by_id(db, user_id=user_id)
@@ -39,8 +39,8 @@ def create_permission(db: Session, permission: schemas.PermissionCreate):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Permission already registered")
     return crud.create_permission(db=db, permission=permission)
 
-def get_all_permissions(db: Session):
-    return crud.get_all_permissions(db)
+def get_all_permissions(db: Session, offset: int = 0, limit: int = 10):
+    return crud.get_all_permissions(db, offset=offset, limit=limit)
 
 def update_permission(db: Session, permission_id: int, permission: schemas.PermissionUpdate):
     db_permission = crud.get_permission_by_id(db, permission_id=permission_id)
@@ -61,8 +61,8 @@ def create_group(db: Session, group: schemas.GroupCreate):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Group already registered")
     return crud.create_group(db=db, group=group)
 
-def get_all_groups(db: Session):
-    return crud.get_all_groups(db)
+def get_all_groups(db: Session, offset: int = 0, limit: int = 10):
+    return crud.get_all_groups(db, offset=offset, limit=limit)
 
 def update_group(db: Session, group_id: int, group: schemas.GroupUpdate):
     db_group = crud.get_group_by_id(db, group_id=group_id)
