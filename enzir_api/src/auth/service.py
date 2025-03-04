@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
-from auth import models, schemas, crud
+from src.auth import models, schemas, crud
 from passlib.context import CryptContext
-from auth.security import hash_password, verify_password
+from src.auth.security import hash_password, verify_password
 
 def create_user(db: Session, user: schemas.UserCreate):
     db_user = crud.get_user_by_username(db, username=user.username)

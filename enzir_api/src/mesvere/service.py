@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
-from mesvere import models, schemas, crud
+from src.mesvere import models, schemas, crud
 
 def create_mesvere(db: Session, mesvere: schemas.MesvereCreate):
     return crud.create_mesvere(db, mesvere)

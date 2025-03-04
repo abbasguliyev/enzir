@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from auth.router import router as auth_router
-from mesvere.router import router as mesvere_router
+from src.auth.router import router as auth_router
+from src.mesvere.router import router as mesvere_router
 
 app = FastAPI()
 

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from auth.models import User, Permission, Group
-from auth.schemas import UserCreate, UserUpdate, PermissionCreate, PermissionUpdate, GroupCreate, GroupUpdate
+from src.auth.models import User, Permission, Group
+from src.auth.schemas import UserCreate, UserUpdate, PermissionCreate, PermissionUpdate, GroupCreate, GroupUpdate
 
 def create_user(db: Session, user: UserCreate, hashed_password: str):
     db_user = User(

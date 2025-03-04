@@ -1,0 +1,7 @@
+.venv
+venv
+.venv/
+venv/
+node-modules/
+.env
+.env/

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from mesvere.models import Mesvere, MesvereQeydleri
-from mesvere.schemas import MesvereCreate, MesvereUpdate, MesvereOut, MesvereQeydleriCreate, MesvereQeydleriUpdate, MesvereQeydleriOut
+from src.mesvere.models import Mesvere, MesvereQeydleri
+from src.mesvere.schemas import MesvereCreate, MesvereUpdate, MesvereOut, MesvereQeydleriCreate, MesvereQeydleriUpdate, MesvereQeydleriOut
 
 def create_mesvere(db: Session, mesvere: MesvereCreate):
     db_mesvere = Mesvere(

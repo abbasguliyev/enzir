@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 from datetime import datetime
-from auth.models import Permission
+from src.auth.models import Permission
 
 class UserBase(BaseModel):
     email: EmailStr

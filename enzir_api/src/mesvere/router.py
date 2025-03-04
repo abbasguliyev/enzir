@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from mesvere import crud, schemas, service
-from database import get_db
+from src.mesvere import crud, schemas, service
+from src.database import get_db
 
 router = APIRouter(
     tags=["Mesvere"]

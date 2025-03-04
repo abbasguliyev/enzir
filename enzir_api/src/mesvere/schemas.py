@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime, date
-from mesvere.models import Mesvere, MesvereQeydleri
+from src.mesvere.models import Mesvere, MesvereQeydleri
 
 class MesvereBase(BaseModel):
     basliq: str
