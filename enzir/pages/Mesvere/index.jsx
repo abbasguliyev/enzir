@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View, ScrollView } from "react-native";
 import { Button, Card, Searchbar } from "react-native-paper";
-import { theme } from "../../../theme";
-
+import { theme } from "../../theme";
+import { useNavigation } from "@react-navigation/native";
 const generateTasks = (count) => {
   return Array.from({ length: count }, (_, index) => ({
     id: index + 1,
-    title: `Task ${index + 1}`,
-    description: `This is the description for task ${index + 1}.`,
+    title: `Məşvərə ${index + 1}`,
+    date: "03.07.2025",
   }));
 };
 
 const TASKS = generateTasks(50);
 
-export default function Tapsiriqlar() {
+function Mesvere() {
+  const navigation = useNavigation();
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const [page, setPage] = useState(1);
@@ -24,7 +26,7 @@ export default function Tapsiriqlar() {
   const endIndex = startIndex + itemsPerPage;
   const paginatedTasks = TASKS.slice(startIndex, endIndex);
   return (
-    <View>
+    <ScrollView>
       <Searchbar
         placeholder="Axtar"
         onChangeText={setSearchQuery}
@@ -40,9 +42,9 @@ export default function Tapsiriqlar() {
           scrollEnabled={false}
           renderItem={({ item }) => (
             <Card style={styles.card}>
+              <Card.Title title={item.title} />
               <Card.Content>
-                <Text variant="titleMedium">{item.title}</Text>
-                <Text variant="bodyMedium">{item.description}</Text>
+                <Text variant="bodyMedium">{item.date}</Text>
               </Card.Content>
               <Card.Actions>
                 <Button
@@ -51,6 +53,13 @@ export default function Tapsiriqlar() {
                   onPress={() => console.log("Edit", item.id)}
                 >
                   Düzəlt
+                </Button>
+                <Button
+                  mode="contained"
+                  buttonColor={theme.colors.secondary}
+                  onPress={() => navigation.navigate("MesvereQeydleri")}
+                >
+                  Ətraflı
                 </Button>
               </Card.Actions>
             </Card>
@@ -70,9 +79,11 @@ export default function Tapsiriqlar() {
           </Button>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
+
+export default Mesvere;
 
 const styles = StyleSheet.create({
   searchBar: {
@@ -86,12 +97,12 @@ const styles = StyleSheet.create({
   },
   card: {
     marginVertical: 10,
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   pagination: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 10,
     alignItems: "center",
-  }
+  },
 });

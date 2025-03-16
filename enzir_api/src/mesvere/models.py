@@ -22,7 +22,7 @@ class MesvereQeydleri(Base):
     aciqlama = Column(String)
     bitibmi = Column(Boolean, default=False)
     mesvere_id = Column(Integer, ForeignKey("mesvere.id"))
-    user_id = Column(Integer, ForeignKey("user.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
 
     mesvere = relationship("Mesvere", back_populates="mesvere_qeydleri")
     user = relationship("User", back_populates="mesvere_qeydleri")
