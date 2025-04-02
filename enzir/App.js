@@ -11,6 +11,9 @@ import { Ionicons } from "@expo/vector-icons";
 import Mesvere from "./pages/Mesvere";
 import Tapsiriqlar from "./components/Home/Tapsiriqlar";
 
+import store from "./store";
+import { Provider } from "react-redux";
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -36,15 +39,17 @@ function DrawerNavigator() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {/* Drawer Navigasiyanı Stack içində saxlayırıq */}
-        <Stack.Screen name="Drawer" component={DrawerNavigator} options={{ headerShown: false }} />
-        
-        {/* Bu səhifə yan menyuda OLMAYACAQ */}
-        <Stack.Screen name="MesvereQeydleri" component={Tapsiriqlar} options={{ title: "Məşvərə Qeydləri" }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/* Drawer Navigasiyanı Stack içində saxlayırıq */}
+          <Stack.Screen name="Drawer" component={DrawerNavigator} options={{ headerShown: false }} />
+          
+          {/* Bu səhifə yan menyuda OLMAYACAQ */}
+          <Stack.Screen name="MesvereQeydleri" component={Tapsiriqlar} options={{ title: "Məşvərə Qeydləri" }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
